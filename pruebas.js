@@ -15,7 +15,15 @@ const TaskKo ='[ ]'
 //La lista de las tareas de prueba
 let TaskList = [
     {done: false, description: 'tuputamadre'},
-    {done: false, description: 'esunaguarra'}
+    {done: false, description: 'esunaguarra'},
+    {done: true, description: 'eso'},
+    {done: true, description: 'tafeo'},
+    {done: false, description: 'esunaguarra'},
+    {done: true, description: 'eso'},
+    {done: false, description: 'esunaguarra'},
+    {done: false, description: 'eso'},
+    {done: true, description: 'esunaguarra'},
+    {done: true, description: 'eso'},
 ];
 
 //Imprimir en pantalla las tareas
@@ -30,12 +38,6 @@ function printTaskList (){
     }
 }
 
-
-
-
-
-
-
 //Marcado de check
 function checker(){
     console.log ("La mision de esto es ver si puedo tachar esta mierda");
@@ -46,4 +48,23 @@ function checker(){
     }
 )};
 
-checker();
+
+
+
+//Borrar tareas realizadas
+function clearCheckeds(){
+    console.log('Vamos a probar si se pueden borrar las tareas realizadas...');
+    printTaskList();
+    rl.question('¿Seguro de borrar las tareas realizadas?', function (respuesta){
+        if (respuesta === 's'){
+            for (i = 0; i < TaskList.length; i++){
+                if (TaskList[i].done){
+                    TaskList.splice(i, 1);
+                    i --;
+                }
+            }
+        }printTaskList();
+    });
+};
+
+clearCheckeds();

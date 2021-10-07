@@ -107,13 +107,35 @@ function exitting(){
     });    
 };
 
+//Borrar tareas realizadas
+function clearCheckeds(){
+    printTaskList();
+    rl.question('¿Seguro de borrar las tareas realizadas? (s/n)', function (respuesta){
+        if (respuesta === 's'|| respuesta === 'S'){
+            for (i = 0; i < TaskList.length; i++){
+                if (TaskList[i].done){
+                    TaskList.splice(i, 1);
+                    i --;
+                }
+            }
+        }else if (respuesta === 'n' || respuesta === 'N'){
+            MaimMenu();
+        }else{
+            ('\n\nDisculpa, no has añadido un valor valido.\n-Selecciona (s) en caso de (si)\n-Selecciona (n) en caso de (no)');
+            clearCheckeds();
+        }
+    printTaskList();
+    MaimMenu();
+    });
+};
+
 //Menú principal
 console.log('\nBienvenido BetaTasker, un programa desarrollado por Michael Lara, gracias a los cursos de mastermind.\n')
 function MaimMenu (){
     console.log ('\n---------------');
     console.log ('MENU PRINCIPAL');
     console.log ('---------------\n');
-    console.log ('1.Ver la lista de tareas\n2.Añadir nueva tarea\n3.Dale check a las tareas ralizadas\n4.Limpiar tareas ralizadas\n5.Salir');
+    console.log ('1.Ver la lista de tareas\n2.Añadir nueva tarea\n3.Dale check a las tareas realizadas\n4.Limpiar tareas ralizadas\n5.Salir');
     rl.question('Seleccione una opcion: ', function (modo){
         switch(modo){
             case '1':
@@ -127,8 +149,7 @@ function MaimMenu (){
                 checker();
                 break;
             case '4':
-                console.log('De momento este modo no está listo, en breves lo estará.');
-                MaimMenu();
+                clearCheckeds();
                 break;         
             case '5':
                 exitting();           
@@ -155,7 +176,7 @@ MaimMenu();
     [ ] 5.2. Con eso puede hace un if y si la condicion de done es true borrarlo
 [X] 7.Añadir la opcion de back en "añadir nueva tarea"
 [X] 8.Mejorar la opcion de "seguir añadiendo nuevas tareas", para al meter algo que no sea n/s te vuelva a preguntar
-[ ] 9.Hacer que cada "seccion" tenga como standard 3 /n
+[X] 9.Hacer que cada "seccion" tenga como standard 3 /n
 [X] 10.Pregunta si esta seguro de salir antes de que cierre la app
 [X] 11.Generar una funcion para "Seguir añadiendo tareas", para poder hacer back en caso de que se introduzca un valor erroneo.
 
