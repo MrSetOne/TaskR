@@ -156,7 +156,7 @@ MaimMenu();
 [X] 7.Añadir la opcion de back en "añadir nueva tarea"
 [X] 8.Mejorar la opcion de "seguir añadiendo nuevas tareas", para al meter algo que no sea n/s te vuelva a preguntar
 [ ] 9.Hacer que cada "seccion" tenga como standard 3 /n
-[ ] 10.Pregunta si esta seguro de salir antes de que cierre la app
+[X] 10.Pregunta si esta seguro de salir antes de que cierre la app
 [X] 11.Generar una funcion para "Seguir añadiendo tareas", para poder hacer back en caso de que se introduzca un valor erroneo.
 
 */
