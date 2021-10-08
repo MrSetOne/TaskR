@@ -113,7 +113,7 @@ function exitting(){
         if (sureExit === 's' || sureExit === 'S'){
             rl.close();
             console.clear();
-            console.log('\nMuchas gracias por probar mi programa, sé que es muy feo pero lo he hecho con todo mi corazón. \n:)\n:)\n:)\n:)');
+            console.log('\nMuchas gracias por probar mi programa, sé que es muy feo pero lo he hecho con todo mi corazón. \n\n:)\n\n)');
         } else if (sureExit === 'n' || sureExit === 'N'){
             MaimMenu();
         } else {
@@ -133,15 +133,13 @@ function clearCheckeds(){
                     TaskList.splice(i, 1);
                     i --;
                 }
-            }
+            }MaimMenu();
         }else if (respuesta === 'n' || respuesta === 'N'){
             MaimMenu();
         }else{
             ('\n\nDisculpa, no has añadido un valor valido.\n-Selecciona (s) en caso de (si)\n-Selecciona (n) en caso de (no)');
             clearCheckeds();
         }
-    printTaskList();
-    MaimMenu();
     });
 };
 
@@ -200,19 +198,36 @@ function MaimMenu (){
 Starter();
 
 
-/*Cosas que mejorar:
+/*Hoja de ruta:
 
-[X] 1.Hacer que en la funcion de marcar se marque el numero que indicas, es decir, al numero que introduces restarle 1
-[X] 2.Hacer un default y arreglar el exit, quitar el 99
-[ ] 3.Hacerlo mas bonito en general
-[X] 4.GG bro.
-[X] 5.Investigar si se pueden borrar datos de los arrays
-    [X] 5.1. https://love2dev.com/blog/javascript-remove-from-array/#remove-from-array-splice-value
-    [X] 5.2. Con eso puede hace un if y si la condicion de done es true borrarlo
-[X] 7.Añadir la opcion de back en "añadir nueva tarea"
-[X] 8.Mejorar la opcion de "seguir añadiendo nuevas tareas", para al meter algo que no sea n/s te vuelva a preguntar
-[X] 9.Hacer que cada "seccion" tenga como standard 3 /n
-[X] 10.Pregunta si esta seguro de salir antes de que cierre la app
-[X] 11.Generar una funcion para "Seguir añadiendo tareas", para poder hacer back en caso de que se introduzca un valor erroneo.
+[X]ver 1.0
+    [X] 1.Hacer que en la funcion de marcar se marque el numero que indicas, es decir, al numero que introduces restarle 1
+    [X] 2.Hacer un default y arreglar el exit, quitar el 99
+    [X] 3.Hacerlo mas bonito en general
+    [X] 4.GG bro.
+    [X] 5.Investigar si se pueden borrar datos de los arrays
+        [X] 5.1. https://love2dev.com/blog/javascript-remove-from-array/#remove-from-array-splice-value
+        [X] 5.2. Con eso puede hace un if y si la condicion de done es true borrarlo
+    [X] 7.Añadir la opcion de back en "añadir nueva tarea"
+    [X] 8.Mejorar la opcion de "seguir añadiendo nuevas tareas", para al meter algo que no sea n/s te vuelva a preguntar
+    [X] 9.Hacer que cada "seccion" tenga como standard 3 /n
+    [X] 10.Pregunta si esta seguro de salir antes de que cierre la app
+    [X] 11.Generar una funcion para "Seguir añadiendo tareas", para poder hacer back en caso de que se introduzca un valor erroneo.
+
+[ ] ver 1.0.1
+    [ ] 1.Hacer un booleano en las funciones que tengas preguntas de "sure?" en caso de ser necesario (Ej: la solucion que he obtenido para solucionar el "printTaskList")
+
+[ ] ver 1.1
+    [ ] 1.Generar una libreria con todas las funciones con la finalidad de simplificar el codigo enhormemente
+    [ ] 2.Generar un login (Simple) para que cada usuario tenga su rutina predefinida
+
+[ ] ver 1.2
+    [ ] 1.Investigar como hacer un archivo a modo de base de datos para que se puedan almacenar la informacion de los usuarios sin ser necesario entrar al codigo directamente
+    [ ] 2.Generar un sistema que permita crear usuarios nuevos
+    [ ] 3.Dar al usuario la oportunidad de poder generar y modificar sus propias rutinas, incluso darle la oportunidad de reordenarlas usando es splice explicado en 
+        en el punto 5 de la version 1.0
+
+[ ] ver 2.0
+    [ ] 1.Dotar al programa de interfaz visual via internet para hacerlo accesible desde cualquier lado
 
 */
