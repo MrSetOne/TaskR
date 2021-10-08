@@ -20,14 +20,20 @@ let TaskList =[]
 
 
 //Imprimir en pantalla las tareas
-function printTaskList (){
+function printTaskList (feedback){
+    function hayFeedback(feedback){
+        if(feedback == false){
+            askMaimMenu();
+        }
+    };
+    console.clear();
     if (TaskList.length == 0){
-        console.log ('\n\n\n-------------------------------');
+        console.log ('-------------------------------');
         console.log ('La lista de tareas esta vacia');
-        console.log ('-------------------------------\n\n');
-        MaimMenu();
+        console.log ('-------------------------------');
+        hayFeedback(feedback);
     }else{
-        console.log ('\n\n\n\n-------------------------------');
+        console.log ('-------------------------------');
         console.log ('La lista de tareas actual es: ');
         console.log ('-------------------------------');
         for(i = 0; i<TaskList.length; i++){
@@ -37,6 +43,7 @@ function printTaskList (){
                 console.log((i + 1), TaskKo, TaskList[i].description);
             }
         }
+        hayFeedback(feedback);
     }
     
 };
@@ -62,6 +69,14 @@ function moreTask (){
 
 //Añadir tarea con Readline
 function askForTasks(TaskList){
+    console.clear();
+    if (TaskList.length == 0){
+        console.log ('-------------------------------');
+        console.log ('La lista de tareas esta vacia');
+        console.log ('-------------------------------');
+    }else{
+        printTaskList(true);
+    }
     console.log ('Para volver al menu principal escribe back');
     rl.question('Añade la nueva tarea: ', function(taskdesc) {
         if (taskdesc === 'back'){
@@ -69,7 +84,7 @@ function askForTasks(TaskList){
         }else{
             addTask(TaskList, taskdesc);
             console.log('La lista de tareas actual es: ');
-            printTaskList(TaskList);
+            printTaskList(true);
             moreTask();
         }       
     });
@@ -97,7 +112,8 @@ function exitting(){
     rl.question('¿Seguro de que quieres salir? (s/n): ', function (sureExit){
         if (sureExit === 's' || sureExit === 'S'){
             rl.close();
-            console.log('\nMuchas gracias por probar mi programa, sé que es muy feo pero lo he hecho con todo mi corazón, GG :)\n');
+            console.clear();
+            console.log('\nMuchas gracias por probar mi programa, sé que es muy feo pero lo he hecho con todo mi corazón. \n:)\n:)\n:)\n:)');
         } else if (sureExit === 'n' || sureExit === 'N'){
             MaimMenu();
         } else {
@@ -129,18 +145,37 @@ function clearCheckeds(){
     });
 };
 
+//Starter
+function Starter() {
+    console.clear();
+    console.log('\nBienvenido BetaTasker, un programa desarrollado por Michael Lara, gracias a los cursos de mastermind.\n')
+    rl.question("Pulsa enter para empezar", function (PrimeraPregunta){
+        if(PrimeraPregunta !== 'patatapodridaqueflipas'){
+            MaimMenu();
+        }
+    });
+};
+
+//Consulta de volver al menú
+function askMaimMenu(){
+    rl.question('Pulsa enter para volver al menu principal', function(Enter){
+        if (Enter !== 'patataasada'){
+            MaimMenu();
+        }
+    })
+}
+
 //Menú principal
-console.log('\nBienvenido BetaTasker, un programa desarrollado por Michael Lara, gracias a los cursos de mastermind.\n')
 function MaimMenu (){
-    console.log ('\n---------------');
+    console.clear();
+    console.log ('---------------');
     console.log ('MENU PRINCIPAL');
-    console.log ('---------------\n');
+    console.log ('---------------');
     console.log ('1.Ver la lista de tareas\n2.Añadir nueva tarea\n3.Dale check a las tareas realizadas\n4.Limpiar tareas ralizadas\n5.Salir');
     rl.question('Seleccione una opcion: ', function (modo){
         switch(modo){
             case '1':
-                printTaskList();
-                MaimMenu();
+                printTaskList(false);
                 break;
             case '2':
                 askForTasks(TaskList);
@@ -160,9 +195,9 @@ function MaimMenu (){
         }
     
     });
-}
+};
 
-MaimMenu();
+Starter();
 
 
 /*Cosas que mejorar:
@@ -171,9 +206,9 @@ MaimMenu();
 [X] 2.Hacer un default y arreglar el exit, quitar el 99
 [ ] 3.Hacerlo mas bonito en general
 [X] 4.GG bro.
-[ ] 5.Investigar si se pueden borrar datos de los arrays
-    [ ] 5.1. https://love2dev.com/blog/javascript-remove-from-array/#remove-from-array-splice-value
-    [ ] 5.2. Con eso puede hace un if y si la condicion de done es true borrarlo
+[X] 5.Investigar si se pueden borrar datos de los arrays
+    [X] 5.1. https://love2dev.com/blog/javascript-remove-from-array/#remove-from-array-splice-value
+    [X] 5.2. Con eso puede hace un if y si la condicion de done es true borrarlo
 [X] 7.Añadir la opcion de back en "añadir nueva tarea"
 [X] 8.Mejorar la opcion de "seguir añadiendo nuevas tareas", para al meter algo que no sea n/s te vuelva a preguntar
 [X] 9.Hacer que cada "seccion" tenga como standard 3 /n
