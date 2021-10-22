@@ -109,11 +109,12 @@ function checker() {
 
 //Sistema de exit
 function exitting(){
+    console.clear();
     rl.question('¿Seguro de que quieres salir? (s/n): ', function (sureExit){
         if (sureExit === 's' || sureExit === 'S'){
             rl.close();
             console.clear();
-            console.log('\nMuchas gracias por probar mi programa, sé que es muy feo pero lo he hecho con todo mi corazón. \n\n:)\n\n)');
+            console.log('\nMuchas gracias por probar mi programa, sé que es muy feo pero lo he hecho con todo mi corazón. \n\n:)\n\n');
         } else if (sureExit === 'n' || sureExit === 'N'){
             MaimMenu();
         } else {
@@ -138,7 +139,7 @@ function clearCheckeds(){
             MaimMenu();
         }else{
             ('\n\nDisculpa, no has añadido un valor valido.\n-Selecciona (s) en caso de (si)\n-Selecciona (n) en caso de (no)');
-            clearCheckeds();
+            clearCheckeds(); // Esto hace como si no pasara nada, porque vuelves a donde estabas y te borra lo que tenias porque printtasklist lo borra todo
         }
     });
 };
@@ -215,7 +216,8 @@ Starter();
     [X] 11.Generar una funcion para "Seguir añadiendo tareas", para poder hacer back en caso de que se introduzca un valor erroneo.
 
 [ ] ver 1.0.1
-    [ ] 1.Hacer un booleano en las funciones que tengas preguntas de "sure?" en caso de ser necesario (Ej: la solucion que he obtenido para solucionar el "printTaskList")
+    [ ] 1.Hacer un booleano en las funciones que tengas preguntas de "sure?" en caso de ser necesario, revisar el caso concreto de "clearchecked"
+          (Ej: la solucion que he obtenido para solucionar el "printTaskList")
 
 [ ] ver 1.1
     [ ] 1.Generar una libreria con todas las funciones con la finalidad de simplificar el codigo enhormemente
